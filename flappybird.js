@@ -37,6 +37,8 @@ let gravity = 0.08; //give the bird gravity so it falls down
 
 // game over
 let gameOver = false;
+//pause the game
+let pause = false;
 //score
 let score = 0;
 
@@ -70,13 +72,28 @@ window.onload = function() {
     document.addEventListener("keydown", moveBird);
 };
 
+// if i press escape, pause is true
+document.addEventListener("keydown", function(e) {
+    if (e.code == "Escape") {
+        pause = true;
+    } else {
+        pause = false;
+        document.getElementsByClassName("pause")[0].style.display = "none";
+    }
+});
+
 //update the board and redraw bird image everytime the frame updates
 function update() {
     requestAnimationFrame(update);
     // if game over, stop painting the canvas
     if (gameOver) {
         // display game over text
-        document.getElementsByClassName("gameOver")[0].innerHTML = "GAME OVER";
+        document.getElementsByClassName("gameOver")[0].style.display = "block";
+        return;
+    }
+    
+    if(pause == true) {
+        document.getElementsByClassName("pause")[0].style.display = "block";
         return;
     }
     context.clearRect(0, 0, boardWidth, boardHeight);
@@ -116,12 +133,21 @@ function update() {
             pipe.passed = true;
         }
     }
+    // save the highes score in local storage
+    if (localStorage.getItem("highscore") < score) {
+        localStorage.setItem("highscore", score);
+    }
+    // display the highscore    
+    context.fillText("Highscore: " + localStorage.getItem("highscore"), 10, 60);
 }
 
 // place the pipes
 function placepipe() {
     // if game over, stop placing pipes
     if (gameOver) {
+        return;
+    }
+    if (pause == true) {
         return;
     }
 
@@ -167,4 +193,9 @@ function checkCollision(a,b) {
               a.x + a.width > b.x &&
                 a.y < b.y + b.height &&
                     a.y + a.height > b.y;
+}
+
+// reload the page when the restart button is pressed
+function restart() {
+    window.location.reload();
 }

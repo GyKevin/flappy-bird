@@ -8,7 +8,11 @@
     <script src="flappybird.js"></script>
 </head>
 <body>
-    <h1 class="gameOver"></h1>
+    <div class="gameOver">
+        <h1 class="gameOverTXT">GAME OVER</h1>
+        <input type="button" value="Retry" onClick="window.location.reload();">
+    </div> 
+    <h1 class="pause">paused</h1> 
     <!-- canvas is waar de hele game in zit. -->
     <canvas id="board">
     </canvas>
