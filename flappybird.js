@@ -75,6 +75,8 @@ function update() {
     requestAnimationFrame(update);
     // if game over, stop painting the canvas
     if (gameOver) {
+        // display game over text
+        document.getElementsByClassName("gameOver")[0].innerHTML = "GAME OVER";
         return;
     }
     context.clearRect(0, 0, boardWidth, boardHeight);
