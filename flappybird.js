@@ -38,7 +38,7 @@ let gravity = 0.08; //give the bird gravity so it falls down
 // game over
 let gameOver = false;
 //pause the game
-let pause = false;
+let pause = true;
 //score
 let score = 0;
 
@@ -197,5 +197,18 @@ function checkCollision(a,b) {
 
 // reload the page when the restart button is pressed
 function restart() {
-    window.location.reload();
+    // reset the game
+    gameOver = false;
+    pause = false;
+    score = 0;
+    pipeArray = [];
+    bird.y = boardHeight / 2;
+    document.getElementsByClassName("gameOver")[0].style.display = "none";
+    document.getElementsByClassName("pause")[0].style.display = "none";
+    // requestAnimationFrame(update);
+}
+
+function dissapear() {
+    document.getElementsByClassName("pause")[0].style.display = "none";
+    // pause = false;
 }
