@@ -33,3 +33,17 @@ body {
     font-size: 50px;
     font-family: 'VT323', monospace;
 }
+.pause p {
+    font-size: 30px;
+}
+.pause h1 {
+    font-size: 50px;
+    color: yellow;
+    text-shadow: 2px 2px #000;
+}
+.logo {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    padding-left: 830px;
+}

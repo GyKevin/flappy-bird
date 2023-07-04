@@ -8,12 +8,21 @@
     <script src="flappybird.js"></script>
 </head>
 <body>
+    <!-- best education logo -->
+    <img src="./img/logo.png" alt="logo" class="logo">
+    <!-- game over screen, dit komt alleen voor als je dood gaat -->
     <div class="gameOver">
         <h1 class="gameOverTXT">GAME OVER</h1>
+        <!-- restart knopje reset de hele game maar je ziet de highscore nog steeds -->
         <input type="button" value="Retry" onclick="restart()">
-    </div> 
-    <h1 class="pause">paused</h1> 
-    <button onClick="style.display = 'none'">test</button>
+    </div>
+    <!-- main menu, dit zie je als je de game inlaad en als je op escape drukt. -->
+    <div class="pause">
+        <h1>Crappy bird</h1>
+        <p>press space to continue</p>
+        <!-- restart knopje reset de hele game maar je ziet de highscore nog steeds -->
+        <input type="button" value="Restart" onclick="restart()">
+    </div>
     <!-- canvas is waar de hele game in zit. -->
     <canvas id="board">
     </canvas>
